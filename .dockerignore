@@ -1,0 +1,6 @@
+postgres
+docker-compose.yml
+.idea
+.devops
+Dockerfile
+.git
