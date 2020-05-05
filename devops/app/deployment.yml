@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: store-deployment-1.0
+spec:
+  selector:
+    matchLabels:
+      name: store-pod-deployment
+  
+  template:
+    metadata:
+      labels:
+        name: store-pod-deployment
+        version: "1.0"
+    spec:
+      containers:
+        - name: store
+          image: alexdias/store
+          env:
+            - name: DB_HOST
+              value: db
+          ports:
+            - containerPort: 8080
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            initialDelaySeconds: 3
+            periodSeconds: 3
+        
