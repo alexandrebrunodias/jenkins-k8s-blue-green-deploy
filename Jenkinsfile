@@ -40,7 +40,12 @@ pipeline {
 
 		stage('Deploy'){
 			steps{
-				sh 'cd devops && ./blue-green.sh store $tag app/deployment.yml'
+				 withAWS(credentials: 'aws', region: 'us-east-1') {
+                    sh '''
+							aws eks --region us-east-1 update-kubeconfig --name capstone && \
+							cd devops && ./blue-green.sh store $BUILD_NUMBER app/deployment.yml
+                       '''
+                }
 			}
 		}
 	}

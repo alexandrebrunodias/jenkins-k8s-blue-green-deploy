@@ -36,12 +36,14 @@ func CreateDatabase() {
 
 func createConnection(dbName string) *sql.DB {
 	dbHost := os.Getenv("DB_HOST")
+	password := os.Getenv("DB_PASS")
+	user := os.Getenv("DB_USER")
 
 	if dbHost == "" {
 		dbHost = "localhost"
 	}
 
-	dbProperties := "user=postgres dbname=" + dbName + " password=postgres host=" + dbHost + " sslmode=disable"
+	dbProperties := "user=" + user + " dbname=" + dbName + " password=" + password + " host=" + dbHost + " sslmode=disable"
 	connection, err := sql.Open("postgres", dbProperties)
 
 	if err != nil {

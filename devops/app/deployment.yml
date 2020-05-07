@@ -1,26 +1,31 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: store-2.0
+  name: store-1.0
 spec:
   selector:
     matchLabels:
       name: store
-      version: "2.0"
+      version: "1.0"
   
   template:
     metadata:
       labels:
         name: store
-        version: "2.0"
+        version: "1.0"
         
     spec:
       containers:
         - name: store
-          image: alexdias/store:2.0
+          image: alexdias/store:1.0
+          imagePullPolicy: Always
           env:
+            - name: DB_USER
+              value: postgres
             - name: DB_HOST
-              value: db
+              value: store2.cjgfhctc7hg9.us-east-1.rds.amazonaws.com
+            - name: DB_PASS
+              value: postgres
           ports:
             - containerPort: 8080
           livenessProbe:

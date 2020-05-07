@@ -1,11 +1,13 @@
 version: '3.7'
 services:
   web:
-    image: alexdias/store
+    image: alexdias/store:1.0
     environment:
+      - DB_USER=postgres
       - DB_HOST=db
+      - DB_PASS=postgres
     ports:
-      - 8080:8080
+      - 8081:8080
     volumes:
       - /etc/localtime:/etc/localtime:ro
     links:
