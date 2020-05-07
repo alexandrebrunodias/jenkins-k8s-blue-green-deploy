@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: store-2.0
+  name: store-NEWVERSION
 spec:
   selector:
     matchLabels:
       name: store
-      version: "2.0"
+      version: "NEWVERSION"
   
   template:
     metadata:
       labels:
         name: store
-        version: "2.0"
+        version: "NEWVERSION"
         
     spec:
       containers:
         - name: store
-          image: alexdias/store:2.0
+          image: alexdias/store:NEWVERSION
           env:
             - name: DB_HOST
               value: db

@@ -38,14 +38,10 @@ pipeline {
 			}
 		}
 
-		// stage('Deploy'){
-		// 	steps{
-		// 		withAWS(credentials: 'aws', region: 'us-west-1')
-		// 		{
-		// 			sh 'aws eks --region=us-west-1 update-kubeconfig --name capstone'
-		// 			sh 'kubectl apply -f eks-deployment.yml'
-		// 		}
-		// 	}
-		// }
+		stage('Deploy'){
+			steps{
+				sh 'cd devops && ./blue-green.sh store $tag app/deployment.yml'
+			}
+		}
 	}
 }

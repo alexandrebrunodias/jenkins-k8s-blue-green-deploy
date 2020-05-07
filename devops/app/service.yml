@@ -8,5 +8,5 @@ spec:
     - name: http
       port: 8080
   selector:
-    name: store-pod-deployment
+    name: store
     version: "1.0"
