@@ -14,16 +14,20 @@ pipeline {
 		stage('Install dependencies') {
 			steps {
 					sh 'go mod download'
+					sh '''
+						echo "set rtp+=$GOPATH/src/golang.org/x/lint/misc/vim" > ~/.vimrc
+						echo "autocmd BufWritePost,FileWritePost *.go execute 'Lint' | cwindow" >> ~/.vimrc
+					   '''
 			}
 		}
 		stage('Lint') {
 			steps {
-					sh 'golint ./...'
+				sh 'fgt golint ./...'
 			}
 		}
 		stage('Test') {
 			steps {
-					sh 'go test -v ./...'
+				sh 'go test -v ./...'
 			}
 		}
 
@@ -40,12 +44,12 @@ pipeline {
 
 		stage('Deploy'){
 			steps{
-				 withAWS(credentials: 'aws', region: 'us-east-1') {
-                    sh '''
-							aws eks --region us-east-1 update-kubeconfig --name capstone && \
-							cd devops && ./blue-green.sh store $BUILD_NUMBER app/deployment.yml
-                       '''
-                }
+				withAWS(credentials: 'aws', region: 'us-east-1') {
+            sh '''
+								aws eks --region us-east-1 update-kubeconfig --name capstone && \
+								cd devops && ./blue-green.sh store $BUILD_NUMBER app/deployment.yml
+               '''
+        }
 			}
 		}
 	}
