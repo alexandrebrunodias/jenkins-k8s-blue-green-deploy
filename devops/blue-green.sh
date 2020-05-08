@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# Credits: https://www.ianlewis.org/en/bluegreen-deployments-kubernetes
 # blue-green.sh <servicename> <version> <green-deployment.yaml>
 # Deployment name should be <service>-<version>
 

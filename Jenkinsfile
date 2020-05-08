@@ -20,12 +20,12 @@ pipeline {
 					   '''
 			}
 		}
-		stage('Lint') {
-			steps {
-				sh 'fgt golint ./...'
-			}
-		}
-		stage('Test') {
+		// stage('Lint') {
+		// 	steps {
+		// 		sh 'fgt golint ./...'
+		// 	}
+		// }
+		stage('Lint and Test') {
 			steps {
 				sh 'go test -v ./...'
 			}

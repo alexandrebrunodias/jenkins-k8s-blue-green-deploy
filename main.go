@@ -10,5 +10,5 @@ import (
 func main() {
 	db.CreateDatabase()
 	routes.Load()
-	http.ListenAndServe(":8080", nil
+	http.ListenAndServe(":8080", nil)
 }
