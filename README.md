@@ -1,4 +1,4 @@
-<h2> A automated Blue/Green deploy made using Kubernetes (EKS) and Jenkins </h2>
+<h2> A automated Blue/Green deploy using Kubernetes (EKS) and Jenkins </h2>
 This project was made for complete the Udacity Cloud Devops nanodegree program
 
 + <h3>Simple proudct CRUD </h3>
