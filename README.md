@@ -1,5 +1,5 @@
 <h2> A automated Blue/Green deploy using Kubernetes (EKS) and Jenkins </h2>
-This project was made for complete the Udacity Cloud Devops nanodegree program
+This project was created for complete the Udacity Cloud Devops Nanodegree program
 
 + <h3>Simple proudct CRUD </h3>
 The application is simple product CRUD developed using GoLang
